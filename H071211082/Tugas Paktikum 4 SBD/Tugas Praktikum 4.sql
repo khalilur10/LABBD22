@@ -1,0 +1,78 @@
+USE classicmodels;
+
+-- Nomor1
+-- SELECT * FROM products;
+-- SELECT * FROM orderdetails;
+-- SELECT * FROM orders;
+-- 
+-- SELECT orderdetails.productCode, orders.orderDate, products.productName
+-- FROM products
+-- INNER JOIN orderdetails
+-- ON products.productCode = orderdetails.productCode
+-- INNER JOIN orders
+-- ON orderdetails.orderNumber = orders.orderNumber
+-- WHERE productName='1940 Ford Pickup Truck' ORDER BY orderDate DESC;
+
+-- Nomor 2
+-- SELECT * FROM products;
+-- SELECT * FROM orderdetails;
+-- 
+-- SELECT products.productName, products.MSRP
+-- FROM products
+-- INNER JOIN orderdetails
+-- ON products.productCode = orderdetails.productCode
+-- WHERE orderdetails.priceEach < 0.8 * products.MSRP
+
+-- Nomor 3
+-- USE appseminar; 
+-- 
+-- SELECT * FROM ss_pembimbing;
+-- SELECT * FROM ss_mahasiswa;
+-- 
+-- SELECT ss_dosen.nama, ss_mahasiswa.nama
+-- FROM ss_pembimbing
+-- JOIN ss_mahasiswa
+-- ON ss_pembimbing.id_mahasiswa = ss_mahasiswa.id_mahasiswa
+-- JOIN ss_dosenappseminarss_pembimbing
+-- ON ss_dosen.id_dosen = ss_pembimbing.id_pembimbing_utama
+-- WHERE ss_mahasiswa.nama='Sulaeman'
+
+-- Nomor 4
+-- USE classicmodels;
+-- 
+-- -- ALTER TABLE customers
+-- -- ADD status VARCHAR(255) NOT NULL;
+-- -- 
+-- -- SELECT * FROM customers;
+-- -- SELECT * FROM payments;
+-- -- 
+-- -- SELECT * FROM orders;
+-- -- SELECT * FROM orderdetails;
+-- -- 
+-- UPDATE customers
+-- INNER JOIN payments
+-- ON customers.customerNumber = payments.customerNumber
+-- INNER JOIN orders
+-- ON orders.customerNumber =  payments.customerNumber
+-- INNER JOIN orderdetails
+-- ON orderdetails.orderNumber = orders.orderNumber
+-- SET customers.status ='VIP'
+-- WHERE quantityOrdered>50 or amount>100000;     
+-- -- UPDATE custoclassicmodelsmers SET STATUS = 'regular'  
+-- SELECT * FROM customers WHERE STATUS = 'VIP'                                          
+-- 
+-- Nomor 5
+-- ALTER TABLE orderdetails
+-- DROP CONSTRAINT orderdetails_ibfk_1; 
+-- ALTER TABLE payments
+-- DROP CONSTRAINT payments_ibfk_1;
+-- 
+-- ALTER TABLE Payments
+-- ADD CONSTRAINT payments_ibfk_1 FOREIGN KEY(customerNumber) REFERENCES customers(customerNumber)
+-- ON DELETE CASCADE ON UPDATE CASCADE;
+-- 
+-- DELETE customers, orders, orderdetails
+-- FROM customers
+-- INNER JOIN orders
+-- ON customers.customerNumber = orders.customerNumber
+-- WHERE orders.status = 'Cancelled';
